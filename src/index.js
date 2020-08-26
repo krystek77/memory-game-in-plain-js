@@ -9,18 +9,18 @@ import revers from './assets/images/revers.png';
 import matched from './assets/images/matched.png';
 
 const puzzlesArray = [
-  { image: angryBird1, name: 'Angry Bird 1' },
-  { image: angryBird2, name: 'Angry Bird 2' },
-  { image: angryBird3, name: 'Angry Bird 3' },
-  { image: angryBird4, name: 'Angry Bird 4' },
-  { image: angryBird5, name: 'Angry Bird 5' },
-  { image: angryBird6, name: 'Angry Bird 6' },
-  { image: angryBird1, name: 'Angry Bird 1' },
-  { image: angryBird2, name: 'Angry Bird 2' },
-  { image: angryBird3, name: 'Angry Bird 3' },
-  { image: angryBird4, name: 'Angry Bird 4' },
-  { image: angryBird5, name: 'Angry Bird 5' },
-  { image: angryBird6, name: 'Angry Bird 6' },
+  { image: angryBird1, name: 'Angry Bird 1', clicked: false },
+  { image: angryBird2, name: 'Angry Bird 2', clicked: false },
+  { image: angryBird3, name: 'Angry Bird 3', clicked: false },
+  { image: angryBird4, name: 'Angry Bird 4', clicked: false },
+  { image: angryBird5, name: 'Angry Bird 5', clicked: false },
+  { image: angryBird6, name: 'Angry Bird 6', clicked: false },
+  { image: angryBird1, name: 'Angry Bird 1', clicked: false },
+  { image: angryBird2, name: 'Angry Bird 2', clicked: false },
+  { image: angryBird3, name: 'Angry Bird 3', clicked: false },
+  { image: angryBird4, name: 'Angry Bird 4', clicked: false },
+  { image: angryBird5, name: 'Angry Bird 5', clicked: false },
+  { image: angryBird6, name: 'Angry Bird 6', clicked: false },
 ];
 let choosenPuzzles = [];
 let choosenPuzzlesId = [];
@@ -60,6 +60,8 @@ function checkForMatch() {
     console.log('You find mathed puzzles');
     puzzles[firstPuzzleId].firstChild.src = matched;
     puzzles[secondPuzzleId].firstChild.src = matched;
+    puzzlesArray[firstPuzzleId].clicked = true;
+    puzzlesArray[secondPuzzleId].clicked = true;
     winnerPuzzles.push(firstPuzzle);
   } else {
     console.log('Try again');
@@ -75,11 +77,15 @@ function checkForMatch() {
  *
  */
 function flipPuzzle() {
+  console.log(puzzlesArray);
   const dataId = this.dataset.id;
-  const img = this.firstChild;
-  img.src = puzzlesArray[dataId].image;
-  choosenPuzzles.push(puzzlesArray[dataId].name);
-  choosenPuzzlesId.push(dataId);
+  const puzzle = puzzlesArray[dataId].clicked;
+  if (!puzzle) {
+    const img = this.firstChild;
+    img.src = puzzlesArray[dataId].image;
+    choosenPuzzles.push(puzzlesArray[dataId].name);
+    choosenPuzzlesId.push(dataId);
+  }
   if (choosenPuzzles.length === 2) {
     setTimeout(checkForMatch, 500);
   }
@@ -107,7 +113,9 @@ function createPuzzle(image, dataId, container) {
  */
 function createBoard(container) {
   shuffleArray(puzzlesArray);
-  puzzlesArray.forEach((_, index) => {
+  puzzlesArray.forEach((puzzle, index) => {
+    const tempPuzzle = puzzle;
+    tempPuzzle.clicked = false;
     createPuzzle(revers, index, container);
   });
 }
