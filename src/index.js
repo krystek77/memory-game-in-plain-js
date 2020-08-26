@@ -54,6 +54,7 @@ function checkForMatch() {
   }
   choosenPuzzles = [];
   choosenPuzzlesId = [];
+  document.querySelector('.game--score').textContent = winnerPuzzles.length;
   checkForWin();
 }
 /**
