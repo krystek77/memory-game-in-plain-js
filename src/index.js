@@ -27,6 +27,18 @@ let choosenPuzzlesId = [];
 let winnerPuzzles = [];
 /**
  *
+ * @param {*} array
+ */
+function shuffleArray(array) {
+  const temp = array;
+  for (let i = temp.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [temp[i], temp[j]] = [temp[j], temp[i]];
+  }
+}
+
+/**
+ *
  */
 function checkForWin() {
   if (winnerPuzzles.length === puzzlesArray.length / 2) {
@@ -94,6 +106,7 @@ function createPuzzle(image, dataId, container) {
  * @param {*} container
  */
 function createBoard(container) {
+  shuffleArray(puzzlesArray);
   puzzlesArray.forEach((_, index) => {
     createPuzzle(revers, index, container);
   });
