@@ -6,3 +6,95 @@ $accent: #00803f;
 $dark: #2e2e2e;
 $white: #e2e2e2;
 $gap: 1rem;
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Oswald', sans-serif;
+  margin: 0;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.header {
+  background-color: $primary;
+  color: $white;
+  font-size: 2rem;
+  padding: $gap/2 $gap;
+  .logo {
+    display: flex;
+    &--text {
+      margin-left: $gap/2;
+    }
+  }
+}
+.main {
+  flex-grow: 1;
+}
+.footer {
+  background-color: $secondary;
+  color: $white;
+  padding: $gap/2 $gap;
+  font-size: 1.3rem;
+  &--copyright {
+    text-align: center;
+  }
+}
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  font-size: 3rem;
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+.game {
+  border: 1px solid $dark;
+  background-color: $accent;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.6);
+  width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  &--board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 804px;
+    padding-top: $gap/10;
+    padding-left: $gap/10;
+  }
+  .puzzle {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    margin-right: $gap/10;
+    margin-bottom: $gap/10;
+    border: 1px solid $dark;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &--image {
+      display: block;
+      max-width: 100%;
+    }
+  }
+  &--control {
+    padding: $gap;
+    color: $white;
+    font-size: 2rem;
+    flex-grow: 1;
+  }
+  &--result {
+    padding-bottom: $gap;
+    border-bottom: 1px solid $white;
+  }
+  &--score {
+    padding-left: $gap;
+    font-weight: bold;
+    font-size: 4rem;
+  }
+}
