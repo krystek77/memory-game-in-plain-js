@@ -22,8 +22,24 @@ const puzzlesArray = [
   { image: angryBird5, name: 'Angry Bird 5' },
   { image: angryBird6, name: 'Angry Bird 6' },
 ];
+const choosenPuzzles = [];
+const choosenPuzzlesId = [];
+/**
+ *
+ */
+function checkForMatch() {}
+/**
+ *
+ */
 function flipPuzzle() {
-  console.log(this.dataset.id);
+  const dataId = this.dataset.id;
+  const img = this.firstChild;
+  img.src = puzzlesArray[dataId].image;
+  choosenPuzzles.push(puzzlesArray[dataId].name);
+  choosenPuzzlesId.push(dataId);
+  if (choosenPuzzles.length === 2) {
+    setTimeout(checkForMatch, 500);
+  }
 }
 /**
  *
