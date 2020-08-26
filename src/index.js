@@ -42,7 +42,6 @@ function shuffleArray(array) {
  */
 function checkForWin() {
   if (winnerPuzzles.length === puzzlesArray.length / 2) {
-    console.log('Gratulations !');
     document.querySelector('.game--win').style.display = 'block';
     document.querySelector('.btn').disabled = false;
   }
@@ -57,14 +56,12 @@ function checkForMatch() {
   const firstPuzzleId = choosenPuzzlesId[0];
   const secondPuzzleId = choosenPuzzlesId[1];
   if (firstPuzzle === secondPuzzle) {
-    console.log('You find mathed puzzles');
     puzzles[firstPuzzleId].firstChild.src = matched;
     puzzles[secondPuzzleId].firstChild.src = matched;
     puzzlesArray[firstPuzzleId].clicked = true;
     puzzlesArray[secondPuzzleId].clicked = true;
     winnerPuzzles.push(firstPuzzle);
   } else {
-    console.log('Try again');
     puzzles[firstPuzzleId].firstChild.src = revers;
     puzzles[secondPuzzleId].firstChild.src = revers;
   }
@@ -77,7 +74,6 @@ function checkForMatch() {
  *
  */
 function flipPuzzle() {
-  console.log(puzzlesArray);
   const dataId = this.dataset.id;
   const puzzle = puzzlesArray[dataId].clicked;
   if (!puzzle) {
@@ -123,7 +119,6 @@ function createBoard(container) {
  *
  */
 function startGame() {
-  console.log('Play again...');
   winnerPuzzles = [];
   const puzzles = document.querySelectorAll('.puzzle');
   puzzles.forEach((puzzle) => puzzle.remove());
