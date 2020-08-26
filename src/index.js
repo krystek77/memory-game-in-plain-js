@@ -54,5 +54,8 @@ function createBoard(container) {
 
 window.addEventListener('DOMContentLoaded', function start() {
   const game = document.querySelector('.game');
-  createBoard(game);
+  const board = document.createElement('div');
+  board.classList.add('game--board');
+  createBoard(board);
+  game.appendChild(board);
 });
