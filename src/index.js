@@ -24,6 +24,15 @@ const puzzlesArray = [
 ];
 let choosenPuzzles = [];
 let choosenPuzzlesId = [];
+const winnerPuzzles = [];
+/**
+ *
+ */
+function checkForWin() {
+  if (winnerPuzzles.length === puzzlesArray.length / 2) {
+    console.log('Gratulations !');
+  }
+}
 /**
  *
  */
@@ -37,6 +46,7 @@ function checkForMatch() {
     console.log('You find mathed puzzles');
     puzzles[firstPuzzleId].firstChild.src = matched;
     puzzles[secondPuzzleId].firstChild.src = matched;
+    winnerPuzzles.push(firstPuzzle);
   } else {
     console.log('Try again');
     puzzles[firstPuzzleId].firstChild.src = revers;
@@ -44,6 +54,7 @@ function checkForMatch() {
   }
   choosenPuzzles = [];
   choosenPuzzlesId = [];
+  checkForWin();
 }
 /**
  *
