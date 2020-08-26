@@ -99,7 +99,21 @@ function createBoard(container) {
 window.addEventListener('DOMContentLoaded', function start() {
   const game = document.querySelector('.game');
   const board = document.createElement('div');
+  const control = document.createElement('div');
+  const result = document.createElement('p');
+  const score = document.createElement('span');
+  const text = document.createTextNode('Scores:');
+  const startScoreText = document.createTextNode('0');
+  score.classList.add('game--score');
+  score.appendChild(startScoreText);
+  result.classList.add('game--result');
+  control.classList.add('game--control');
+  result.appendChild(text);
+  result.appendChild(score);
+  control.appendChild(result);
+
   board.classList.add('game--board');
   createBoard(board);
   game.appendChild(board);
+  game.appendChild(control);
 });
