@@ -1,11 +1,6 @@
-# Boilerplate for web application with
+# Memory Game in plain JavaScript
 
-1. webpack
-2. babel
-3. css/scss
-4. fonts
-5. images
-6. eslint
-7. prettier
-8. stylelint
-9. husky / lint-stage
+1. clone repository in your directory
+2. npm install
+3. npm run start to run server
+
