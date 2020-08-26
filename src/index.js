@@ -24,13 +24,15 @@ const puzzlesArray = [
 ];
 let choosenPuzzles = [];
 let choosenPuzzlesId = [];
-const winnerPuzzles = [];
+let winnerPuzzles = [];
 /**
  *
  */
 function checkForWin() {
   if (winnerPuzzles.length === puzzlesArray.length / 2) {
     console.log('Gratulations !');
+    document.querySelector('.game--win').style.display = 'block';
+    document.querySelector('.btn').disabled = false;
   }
 }
 /**
@@ -99,9 +101,18 @@ function createBoard(container) {
 /**
  *
  */
-function playAgain() {
+function startGame() {
   console.log('Play again...');
+  winnerPuzzles = [];
+  const puzzles = document.querySelectorAll('.puzzle');
+  puzzles.forEach((puzzle) => puzzle.remove());
+  const board = document.querySelector('.game--board');
+  createBoard(board);
+  document.querySelector('.game--win').style.display = 'none';
+  document.querySelector('.btn').disabled = true;
+  document.querySelector('.game--score').textContent = winnerPuzzles.length;
 }
+
 window.addEventListener('DOMContentLoaded', function start() {
   const game = document.querySelector('.game');
   const board = document.createElement('div');
@@ -111,19 +122,24 @@ window.addEventListener('DOMContentLoaded', function start() {
   const text = document.createTextNode('Scores:');
   const startScoreText = document.createTextNode('0');
   const button = document.createElement('button');
+  const win = document.createElement('p');
   button.setAttribute('type', 'button');
   button.classList.add('btn');
   button.disabled = true;
   button.textContent = 'Start';
-  button.addEventListener('click', playAgain);
+  button.addEventListener('click', startGame);
   score.classList.add('game--score');
   score.appendChild(startScoreText);
+  win.classList.add('game--win');
+  win.textContent = 'Gratulations!';
+  win.style.display = 'none';
   result.classList.add('game--result');
   control.classList.add('game--control');
   result.appendChild(text);
   result.appendChild(score);
   control.appendChild(result);
   control.appendChild(button);
+  control.appendChild(win);
 
   board.classList.add('game--board');
   createBoard(board);
