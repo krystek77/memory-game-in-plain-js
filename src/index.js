@@ -6,7 +6,7 @@ import angryBird4 from './assets/images/angrybirds_four-min.png';
 import angryBird5 from './assets/images/angrybirds_five-min.png';
 import angryBird6 from './assets/images/angrybirds_six-min.png';
 import revers from './assets/images/revers.png';
-// import matched from './assets/images/matched.png';
+import matched from './assets/images/matched.png';
 
 const puzzlesArray = [
   { image: angryBird1, name: 'Angry Bird 1' },
@@ -22,12 +22,29 @@ const puzzlesArray = [
   { image: angryBird5, name: 'Angry Bird 5' },
   { image: angryBird6, name: 'Angry Bird 6' },
 ];
-const choosenPuzzles = [];
-const choosenPuzzlesId = [];
+let choosenPuzzles = [];
+let choosenPuzzlesId = [];
 /**
  *
  */
-function checkForMatch() {}
+function checkForMatch() {
+  const puzzles = document.querySelectorAll('.puzzle');
+  const firstPuzzle = choosenPuzzles[0];
+  const secondPuzzle = choosenPuzzles[1];
+  const firstPuzzleId = choosenPuzzlesId[0];
+  const secondPuzzleId = choosenPuzzlesId[1];
+  if (firstPuzzle === secondPuzzle) {
+    console.log('You find mathed puzzles');
+    puzzles[firstPuzzleId].firstChild.src = matched;
+    puzzles[secondPuzzleId].firstChild.src = matched;
+  } else {
+    console.log('Try again');
+    puzzles[firstPuzzleId].firstChild.src = revers;
+    puzzles[secondPuzzleId].firstChild.src = revers;
+  }
+  choosenPuzzles = [];
+  choosenPuzzlesId = [];
+}
 /**
  *
  */
