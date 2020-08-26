@@ -96,7 +96,12 @@ function createBoard(container) {
     createPuzzle(revers, index, container);
   });
 }
-
+/**
+ *
+ */
+function playAgain() {
+  console.log('Play again...');
+}
 window.addEventListener('DOMContentLoaded', function start() {
   const game = document.querySelector('.game');
   const board = document.createElement('div');
@@ -105,6 +110,12 @@ window.addEventListener('DOMContentLoaded', function start() {
   const score = document.createElement('span');
   const text = document.createTextNode('Scores:');
   const startScoreText = document.createTextNode('0');
+  const button = document.createElement('button');
+  button.setAttribute('type', 'button');
+  button.classList.add('btn');
+  button.disabled = true;
+  button.textContent = 'Start';
+  button.addEventListener('click', playAgain);
   score.classList.add('game--score');
   score.appendChild(startScoreText);
   result.classList.add('game--result');
@@ -112,6 +123,7 @@ window.addEventListener('DOMContentLoaded', function start() {
   result.appendChild(text);
   result.appendChild(score);
   control.appendChild(result);
+  control.appendChild(button);
 
   board.classList.add('game--board');
   createBoard(board);
